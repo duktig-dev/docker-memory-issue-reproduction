@@ -10,6 +10,7 @@ To reproduce this issue, just run:
 
 ```
 git clone https://github.com/duktig-dev/docker-memory-issue-reproduction.git
+cd docker-memory-issue-reproduction
 docker-compose up -d
 ```
 
