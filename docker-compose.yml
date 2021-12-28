@@ -1,0 +1,81 @@
+version: '3'
+
+services:
+
+  # Events - Testing publisher container
+  docker-containers-issue1:
+    container_name: docker-containers-issue1
+    restart: on-failure
+    build: ./
+    image: docker-containers-issue
+    volumes:
+      - ./log:/log
+    environment:
+      # Publish
+      # interval in milliseconds
+      - PUBLISH_INTERVAL_MLSC=1000
+      # 0 = infinite
+      - PUBLISH_AMOUNT=2500
+      - PUBLISHER_ID=Golang-Publisher-A
+      # Log file path
+      - LOG_FILE_PATH=/log/app.log
+    networks:  
+      - events_network
+
+  docker-containers-issue2:
+    container_name: docker-containers-issue2
+    restart: on-failure
+    image: docker-containers-issue
+    volumes:
+      - ./log:/log
+    environment:
+      # Publish
+      # interval in milliseconds
+      - PUBLISH_INTERVAL_MLSC=1000
+      # 0 = infinite
+      - PUBLISH_AMOUNT=2500
+      - PUBLISHER_ID=Golang-Publisher-B
+      # Log file path
+      - LOG_FILE_PATH=/log/app.log
+    networks:  
+      - events_network
+      
+  docker-containers-issue3:
+    container_name: docker-containers-issue3
+    restart: on-failure
+    image: docker-containers-issue
+    volumes:
+      - ./log:/log
+    environment:
+      # Publish
+      # interval in milliseconds
+      - PUBLISH_INTERVAL_MLSC=1000
+      # 0 = infinite
+      - PUBLISH_AMOUNT=2500
+      - PUBLISHER_ID=Golang-Publisher-C
+      # Log file path
+      - LOG_FILE_PATH=/log/app.log
+    networks:  
+      - events_network
+
+  docker-containers-issue4:
+    container_name: docker-containers-issue4
+    restart: on-failure
+    image: docker-containers-issue
+    volumes:
+      - ./log:/log
+    environment:
+      # Publish
+      # interval in milliseconds
+      - PUBLISH_INTERVAL_MLSC=1000
+      # 0 = infinite
+      - PUBLISH_AMOUNT=2500
+      - PUBLISHER_ID=Golang-Publisher-D
+      # Log file path
+      - LOG_FILE_PATH=/log/app.log
+    networks:  
+      - events_network
+  
+networks:
+  events_network:
+    driver: bridge
